@@ -8,46 +8,24 @@ import {
   faTools,
   faFileInvoiceDollar,
   faUserCog,
-  faTimes
+  faTimes,
+  faCommentDots,    // NEW icon for Contact
+  faRobot           // NEW icon for Assistant IA
 } from '@fortawesome/free-solid-svg-icons';
 
 const Sidebar = ({ isOpen, toggleSidebar, activeTab, setActiveTab }) => {
   const navItems = [
-    {
-      id: 'dashboard',
-      label: 'Tableau de bord',
-      icon: <FontAwesomeIcon icon={faTachometerAlt} className="w-5 h-5" />
-    },
-    {
-      id: 'clients',
-      label: 'Clients',
-      icon: <FontAwesomeIcon icon={faUsers} className="w-5 h-5" />
-    },
-    {
-      id: 'contrats',
-      label: 'Contrats',
-      icon: <FontAwesomeIcon icon={faFileContract} className="w-5 h-5" />
-    },
-    {
-      id: 'interventions',
-      label: 'Interventions',
-      icon: <FontAwesomeIcon icon={faCogs} className="w-5 h-5" />
-    },
-    {
-      id: 'equipment',
-      label: 'Équipements',
-      icon: <FontAwesomeIcon icon={faTools} className="w-5 h-5" />
-    },
-    {
-      id: 'factures',
-      label: 'Factures',
-      icon: <FontAwesomeIcon icon={faFileInvoiceDollar} className="w-5 h-5" />
-    },
-    {
-      id: 'techniciens',
-      label: 'Techniciens',
-      icon: <FontAwesomeIcon icon={faUserCog} className="w-5 h-5" />
-    }
+    { id: 'dashboard',     label: 'Tableau de bord', icon: <FontAwesomeIcon icon={faTachometerAlt} className="w-5 h-5" /> },
+    { id: 'clients',       label: 'Clients',         icon: <FontAwesomeIcon icon={faUsers} className="w-5 h-5" /> },
+    { id: 'contrats',      label: 'Contrats',        icon: <FontAwesomeIcon icon={faFileContract} className="w-5 h-5" /> },
+    { id: 'interventions', label: 'Interventions',   icon: <FontAwesomeIcon icon={faCogs} className="w-5 h-5" /> },
+    { id: 'equipment',     label: 'Équipements',     icon: <FontAwesomeIcon icon={faTools} className="w-5 h-5" /> },
+    { id: 'factures',      label: 'Factures',        icon: <FontAwesomeIcon icon={faFileInvoiceDollar} className="w-5 h-5" /> },
+    { id: 'techniciens',   label: 'Techniciens',     icon: <FontAwesomeIcon icon={faUserCog} className="w-5 h-5" /> },
+
+    // NEW ITEMS
+    { id: 'contact',       label: 'Contact',         icon: <FontAwesomeIcon icon={faCommentDots} className="w-5 h-5" /> },
+    { id: 'assistant-ia',  label: 'Assistant IA',    icon: <FontAwesomeIcon icon={faRobot} className="w-5 h-5" /> },
   ];
 
   const handleItemClick = (itemId) => {
@@ -68,11 +46,13 @@ const Sidebar = ({ isOpen, toggleSidebar, activeTab, setActiveTab }) => {
       )}
 
       {/* Sidebar */}
-      <aside className={`
-        fixed top-0 left-0 h-full w-64 bg-white shadow-xl border-r border-primary-200 z-50 transform transition-transform duration-300 ease-in-out
-        lg:relative lg:translate-x-0 lg:z-30
-        ${isOpen ? 'translate-x-0' : '-translate-x-full'}
-      `}>
+      <aside
+        className={`
+          fixed top-0 left-0 h-full w-64 bg-white shadow-xl border-r border-primary-200 z-50 transform transition-transform duration-300 ease-in-out
+          lg:relative lg:translate-x-0 lg:z-30
+          ${isOpen ? 'translate-x-0' : '-translate-x-full'}
+        `}
+      >
         <div className="flex flex-col h-full">
           {/* Mobile header */}
           <div className="lg:hidden flex items-center justify-between p-4 border-b border-primary-200">
@@ -95,13 +75,10 @@ const Sidebar = ({ isOpen, toggleSidebar, activeTab, setActiveTab }) => {
                   w-full flex items-center space-x-3 px-4 py-3 rounded-lg text-left transition-all duration-200
                   ${activeTab === item.id
                     ? 'bg-primary-100 text-primary-900 shadow-sm border border-primary-200'
-                    : 'text-primary-700 hover:bg-primary-50 hover:text-primary-900'
-                  }
+                    : 'text-primary-700 hover:bg-primary-50 hover:text-primary-900'}
                 `}
               >
-                <span className={`
-                  ${activeTab === item.id ? 'text-primary-600' : 'text-primary-500'}
-                `}>
+                <span className={`${activeTab === item.id ? 'text-primary-600' : 'text-primary-500'}`}>
                   {item.icon}
                 </span>
                 <span className="font-ubuntu-medium">{item.label}</span>

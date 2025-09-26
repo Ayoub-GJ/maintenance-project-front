@@ -7,6 +7,10 @@ import EquipmentPage from './EquipmentPage';
 import FacturesPage from './FacturesPage';
 import TechniciansPage from './TechniciansPage';
 
+// NEW: import the two new pages
+import ContactPage from './ContactPage';
+import AssistantIA from './AssistantIA';
+
 const MainContent = ({ activeTab }) => {
   const renderContent = () => {
     switch (activeTab) {
@@ -24,6 +28,13 @@ const MainContent = ({ activeTab }) => {
         return <EquipmentPage />;
       case 'techniciens':
         return <TechniciansPage />;
+
+      // NEW: handle the two new sidebar items
+      case 'contact':
+        return <ContactPage />;
+      case 'assistant-ia':
+        return <AssistantIA />;
+
       default:
         return <DashboardPage />;
     }
